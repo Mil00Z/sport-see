@@ -4,17 +4,19 @@
   --body-font-family:Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   --bar-sizes:120px;
 
-  --primay-color:#FF0101;
+  --primary-color:#FF0101;
   --grey-color:#979797;
   --light-grey-color:#FBFBFB;
   --debeug-color:#FF00FF;
   --black-color:#000;
   --white-color:#fff;
   --cool-color:#646cff;
+  --timer-color:var(--primary-color);
 
   --reg-radius:8px;
   --btn-radius:8px;
   --reg-padding:2rem;
+  --regTransi:all .2s ease-in-out;
 }
 
 
@@ -22,7 +24,7 @@ body {
   display: flex;
   height:100dvh;
   margin: 0;
-  font :{
+  font : {
     family:var(--body-font-family);
     size:var(--body-font-size);
   }
