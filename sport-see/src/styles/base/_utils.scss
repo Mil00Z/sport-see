@@ -1,0 +1,10 @@
+.core-content{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: var(--white-color);
+}
+
+.debeug {
+  outline:3px dotted var(--debeug-color);
+}

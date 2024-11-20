@@ -1,0 +1,35 @@
+
+.main-nav {
+  display:flex;
+  align-items: center;
+  width:100%;
+  height:var(--bar-sizes);
+  padding:var(--reg-padding);
+  background-color: var(--black-color);
+  
+  ul {
+    --gap: 15dvw;
+  display:flex;
+  justify-content: flex-end;
+  align-items: center;
+  width:100%;
+  column-gap: var(--gap);
+  }
+
+}
+
+.second-nav {
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+
+.link{
+
+  font-size:1.75rem;
+  color:var(--white-color);
+
+
+  &.active {
+    color:var(--primary-color);
+  }
+}

@@ -1,0 +1,95 @@
+:root {
+ 
+  --body-font-size:1rem;
+  --body-font-family:Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --bar-sizes:120px;
+
+  --primay-color:#FF0101;
+  --grey-color:#979797;
+  --light-grey-color:#FBFBFB;
+  --debeug-color:#FF00FF;
+  --black-color:#000;
+  --white-color:#fff;
+  --cool-color:#646cff;
+
+  --reg-radius:8px;
+  --btn-radius:8px;
+  --reg-padding:2rem;
+}
+
+
+body {
+  display: flex;
+  height:100dvh;
+  margin: 0;
+  font :{
+    family:var(--body-font-family);
+    size:var(--body-font-size);
+  }
+  
+}
+
+
+#root {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+
+
+
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
