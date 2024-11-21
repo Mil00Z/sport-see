@@ -11,8 +11,6 @@ const CoreData  = () => {
     
     <section className="core-data">
 
-      <h2 className="title">Les données</h2> 
-
       <Graphics/>
 
       <StatsList/>
