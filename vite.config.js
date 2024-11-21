@@ -10,7 +10,7 @@ export default defineConfig({
       '@assets': '/src/assets',
       '@styles': '/src/styles',
       '@components': '/src/components',
-      '@data': '/src/data',
+      '@datas': '/src/datas',
     },
   },
 
