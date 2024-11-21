@@ -5,6 +5,7 @@
   --bar-sizes:120px;
 
   --primary-color:#FF0101;
+  --dark-color:#282D30;
   --grey-color:#979797;
   --light-grey-color:#FBFBFB;
   --debeug-color:#FF00FF;
@@ -22,7 +23,7 @@
 
 body {
   display: flex;
-  height:100dvh;
+  // height:100dvh;
   margin: 0;
   font : {
     family:var(--body-font-family);
@@ -34,7 +35,7 @@ body {
 
 #root {
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   width: 100%;
 }
 

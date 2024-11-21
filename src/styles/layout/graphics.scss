@@ -1,0 +1,89 @@
+
+.block{
+  --op:.25;
+  --sizes:300px;
+  width:var(--sizes);
+  height:var(--sizes);
+  border-radius:var(--reg-radius);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, var(--op));
+}
+
+
+.average{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  row-gap:1rem;
+  background:var(--primary-color);
+}
+
+.score {
+  display:flex;
+  justify-content: center; 
+  align-items: center;
+  background:var(--grey-color);
+
+  .final {
+    color:var(--white-color);
+     font : {
+      weight:bold;
+      size:3rem;
+     }
+  }
+}
+
+.performance {
+  --gap:1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:var(--dark-color);
+  gap:var(--gap);
+
+  .kind,
+  .criteria {
+  margin-block:5px;
+    color:var(--white-color);
+  }
+
+}
+
+.daily{
+  --gap:1.5rem;
+  width:100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap:var(--gap);
+  background:var(--cool-color);
+  
+  .session {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    height:fit-content;
+    padding:1rem;
+    flex-direction: column;
+    row-gap: var(--gap);
+    border: 1px solid var(--white-color);
+    border-radius: var(--reg-radius);
+    
+      .day,
+      .calories,
+      .weight {
+        color:var(--white-color);
+      }
+
+  }
+}
+
+.dates {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2rem;
+  color:var(--white-color);
+
+}

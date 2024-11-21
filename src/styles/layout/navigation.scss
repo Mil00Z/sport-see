@@ -1,17 +1,15 @@
-
-
-
-
-
 .main-nav {
+  --op:.33;
   display:flex;
   align-items: center;
   width:100%;
   height:var(--bar-sizes);
-
   padding:var(--reg-padding);
   background-color: var(--black-color);
   position: relative;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 3px 6px rgba(0,0,0,var(--op));
   
   ul {
     --gap: 10dvw;
