@@ -1,4 +1,5 @@
 import { Outlet} from 'react-router-dom'
+import mockUser from '@datas/mock/mockUser12.json'
 
 import Navigation from '@components/navigation/Navigation'
 import Activities from '@components/activities/Activities'
@@ -13,7 +14,7 @@ function Root() {
         <Activities />
         <main className='core-content'>
           <Navigation />
-          <Outlet />
+          <Outlet context={{mockUser}} />
         </main>
     </>
   )
