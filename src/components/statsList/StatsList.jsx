@@ -1,44 +1,66 @@
+import {useOutletContext} from 'react-router-dom'
+
+import '@styles/layout/statsList.scss'
+
 const StatsList = () => {
 
+  const {mockUser} = useOutletContext();
 
+  const {keyData} = mockUser[0];
+
+
+  //Create UI to display Datas
+    let vitals = [
+      { 
+        label: "Calories",
+        value: keyData?.calorieCount || 'X',
+        unit :"Kcal"
+      },
+      { 
+        label: "Protéines",
+        value: keyData?.proteinCount || 'X',
+        unit:"g"
+      },
+      { 
+        label: "Glucides",
+        value: keyData?.carbohydrateCount || 'X',
+        unit:"g"
+      
+       },
+      { 
+        label: "Lipides",
+        value: keyData?.lipidCount || 'X',
+        unit:"g"
+        
+      }
+    ]
+
+
+  
   return(
 
     <div className="panel stats">
 
       <h3 className="title">Statistiques</h3>
       <ul className="stats-list">
-        <li className="icon icon-stats">
-          <span>Icone</span>
-          <div className="datas">
-            <span>23456 donnée</span>
-            <span>Type donnée</span>
-            </div>
-          </li>
 
-      <li className="icon icon-stats">
-        <span>Icone</span>
-        <div className="datas">
-          <span>23456 donnée</span>
-          <span>Type donnée</span>
-        </div>
-        </li>
+        {vitals.map((element,index) => {
 
-      <li className="icon icon-stats">
-        <span>Icone</span>
-        <div className="datas">
-          <span>23456 donnée</span>
-          <span>Type donnée</span>
-        </div>
-        </li>
+          return(
 
+            <li key={`vitals-${index}`} className="icon icon-stats">
+              <span className={element.label.toLowerCase().substring(0,4)}>Icone</span>
+              <div className="vitals">
+               
+                <span className="unit">{element.value} {element.unit}</span>
+                <span className="label">{element.label}</span>
+              </div>
+            </li>     
+          )
 
-      <li className="icon icon-stats">
-        <span>Icone</span>
-        <div className="datas">
-          <span>23456 donnée</span>
-          <span>Type donnée</span>
-          </div>
-        </li>
+        })
+         }
+
       </ul>
   </div>
 
