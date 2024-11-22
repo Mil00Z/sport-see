@@ -1,5 +1,6 @@
 import {useOutletContext} from 'react-router-dom'
 
+
 import '@styles/layout/statsList.scss'
 
 const StatsList = () => {
@@ -40,8 +41,7 @@ const StatsList = () => {
   return(
 
     <div className="panel stats">
-
-      <h3 className="title">Statistiques</h3>
+      
       <ul className="stats-list">
 
         {vitals.map((element,index) => {
@@ -51,7 +51,6 @@ const StatsList = () => {
             <li key={`vitals-${index}`} className="icon icon-stats">
               <span className={element.label.toLowerCase().substring(0,4)}>Icone</span>
               <div className="vitals">
-               
                 <span className="unit">{element.value} {element.unit}</span>
                 <span className="label">{element.label}</span>
               </div>

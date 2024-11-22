@@ -1,9 +1,15 @@
-import mockAverage from '@datas/mock/mockUser12average.json'
+import mockAverage from '@datas/mock/mockUser12Average.json'
+
+
 import '@styles/layout/graphics.scss'
 
 const Average = () =>{
 
-  let averageDatas = mockAverage.data;
+  let averageDatas = mockAverage[0];
+
+  // let averageDatas = mockAverage.data
+
+  console.log(averageDatas);
 
 
   return ( 

@@ -3,7 +3,7 @@ import mockPerformance from '@datas/mock/mockUser12Performance.json'
 import '@styles/layout/graphics.scss'
 
 
-const Performance = () =>{
+const Performance = () => {
 
   const dataPerf = mockPerformance[0];  
  
@@ -13,7 +13,7 @@ const Performance = () =>{
  
   let dataSets = [values,criterias];
 
-  console.log(dataSets)
+  // console.log(dataSets)
 
   return ( 
   
@@ -30,8 +30,8 @@ const Performance = () =>{
                 )
 
             }
-    
           )}    
+
       </div> 
       <div className="crits">
 
