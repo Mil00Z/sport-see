@@ -34,6 +34,7 @@
 }
 
 .performance {
+  --perf-color:var(--primary-color);
   --gap:1.5rem;
   display: flex;
   justify-content: center;
@@ -43,7 +44,7 @@
 
   .kind,
   .criteria {
-  margin-block:5px;
+    margin-block:5px;
     color:var(--white-color);
   }
 
