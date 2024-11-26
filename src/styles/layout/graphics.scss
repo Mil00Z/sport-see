@@ -1,5 +1,5 @@
-
 .block{
+  --data-color:var(--dark-color);
   --op:.25;
   --sizes:300px;
   width:var(--sizes);
@@ -10,31 +10,56 @@
 
 
 .average{
+  --data-color:var(--primary-color);
   display: flex;
   justify-content: center;
   align-content: center;
   flex-direction: column;
   row-gap:1rem;
-  background:var(--primary-color);
+  background:var(--data-color);
+
+  .custom-tooltip {
+    padding-inline:0.25rem;
+    background-color:var(--white-color);
+    
+    .label{
+      color:var(--black-color);
+      font : {
+        weight:bold;
+       }
+    }
+    
+  }
 }
 
 .score {
+  --data-color:var(--primary-color);
   display:flex;
   justify-content: center; 
   align-items: center;
-  background:var(--grey-color);
+  background:var(--light-color);
+  position: relative;
+  box-shadow:unset;
 
   .final {
-    color:var(--white-color);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    color:var(--dark-color);
+
      font : {
       weight:bold;
-      size:3rem;
+      size:1.75rem;
      }
+  }
+
+  .baseline{
+    color:var(--grey-color);
   }
 }
 
 .performance {
-  --perf-color:var(--primary-color);
+  --data-color:var(--primary-color);
   --gap:1.5rem;
   display: flex;
   justify-content: center;
@@ -48,6 +73,7 @@
     color:var(--white-color);
   }
 
+
 }
 
 .daily{
@@ -58,7 +84,7 @@
   justify-content: center;
   align-items: center;
   gap:var(--gap);
-  background:var(--cool-color);
+  background:var(--light-color);
   
   .session {
     display: flex;
@@ -68,13 +94,13 @@
     padding:1rem;
     flex-direction: column;
     row-gap: var(--gap);
-    border: 1px solid var(--white-color);
+    border: 1px solid var(--dark-color);
     border-radius: var(--reg-radius);
     
       .day,
       .calories,
       .weight {
-        color:var(--white-color);
+        color:var(--dark-color);
       }
 
   }
@@ -86,5 +112,4 @@
   align-items: center;
   column-gap: 2rem;
   color:var(--white-color);
-
 }

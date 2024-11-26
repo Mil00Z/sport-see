@@ -8,3 +8,10 @@
 .debeug {
   outline:3px dotted var(--debeug-color);
 }
+
+
+.error {
+  padding:1rem;
+  font-size:2rem;
+  color: var(--white-color);
+}
