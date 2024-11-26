@@ -1,4 +1,7 @@
+import { useState,useEffect } from 'react';
 import mockPerformance from '@datas/mock/mockUser12Performance.json'
+import Error from '@components/error/Error';
+
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
 import '@styles/layout/graphics.scss'
@@ -7,89 +10,71 @@ import '@styles/layout/graphics.scss'
 const Performance = () => {
 
   const dataPerf = mockPerformance[0];  
- 
-  const values = Object.keys(dataPerf.data).map(key => dataPerf.data[key].value);
 
-  const criterias = Object.keys(dataPerf.kind).map(key => dataPerf.kind[key]).reverse();
+  const [dataLife,setDataLife] = useState(false);
+
+  const [dataSets,setDataSets] = useState([]);
+
+  // const values = Object.keys(dataPerf.data).map(key => dataPerf.data[key].value);
+
+  // const criterias = Object.keys(dataPerf.kind).map(key => dataPerf.kind[key]).reverse();
 
 
-  let dataSets;
+  useEffect(() => { 
 
-  if (dataPerf.length !== 0) {
+    if (dataPerf) {
 
-    dataSets = dataPerf.data.map((item,index) => {
+      setDataLife(dataLife=>!dataLife);
 
-      return {
-        "subject": dataPerf.kind[item.kind],
-        "value": item.value,
-        "fullMark":450
-       }
-    });
+      setDataSets(dataSets => {
 
-    dataSets.reverse();
+        return dataPerf.data.map((item) => {
+  
+          return {
+            "subject": dataPerf.kind[item.kind],
+            "value": item.value,
+            "fullMark":450
+          }
 
-  } else {
+        }).reverse()
 
-    dataSets = [];
-  }
- 
+      });
+  
+    } else {
+  
+      console.error('No data available to display');
+  
+    }
 
-  console.log(dataSets, values);
+  },[dataPerf]);
 
   
   return ( 
   
-    <div className="block performance">
-
-    {/* <div className="vals">
-    //       { values.map((val,index) => {
-
-    //             return (
-    //               <div key={`kind-${index}`} className="kind">
-    //                 <span>{val}</span>
-                    
-    //               </div>
-    //             )
-
-    //         }
-    //       )}    
-
-       </div> 
-      <div className="crits">
+    <div className="block performance" data-user={dataPerf?.userId}>
 
 
-    //       { criterias.map((crit,index) => { 
+      {dataPerf ? (
 
-    //           return (
-    //             <div key={`criteria-${index}`} className="criteria">
-    //               <span>{crit}</span>
-                  
-    //             </div>
-    //           )
-
-    //         }
-
-    //       )} 
-        
-        
-      </div>    */}
-
-    
         <ResponsiveContainer width="100%" height="100%">
-           <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dataSets}>
+
+          <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dataSets} margin={{ top: 0, right: 35, bottom: 0, left: 35 }}>
             <PolarGrid />
-           <PolarAngleAxis dataKey="subject" />
-            <Radar name="Benjamin" dataKey="value" stroke="var(--perf-color)" fill="var(--perf-color)" fillOpacity={0.76} />
-            
-           </RadarChart>
-        </ResponsiveContainer>
-        
-      </div>  
+            <PolarAngleAxis dataKey="subject" />
+            <Radar name="Benjamin" dataKey="value"  fill="var(--data-color)" fillOpacity={0.76} />
+          </RadarChart>
+
+        </ResponsiveContainer>  
+
+      ):( <Error dataLife={dataLife}/>)
+
+    }
 
 
-)  
+  </div>  
 
+
+  )
 
 }
-
 export default Performance
