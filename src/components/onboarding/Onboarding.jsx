@@ -11,10 +11,10 @@ const {mockUser} = useOutletContext();
 
 //User Fake Name
 let now = new Date();
-let evening = now.getHours() >= 18 || now.getHours() < 5 ;
+let evening = now.getHours() >= 17 || now.getHours() < 7 ;
 let userTiming = evening ? 'Bonsoir' : 'Bonjour';
 
-let userName = mockUser[0]?.userInfos.firstName || 'Benjamin';
+let userName = mockUser[0]?.userInfos?.firstName || 'Random Guy';
 
 let userBaseline = 'Félicitation ! Vous avez explosé vos objectifs hier 👏'
 
@@ -29,8 +29,6 @@ useEffect(() => {
   } 
 
 }, [evening]);
-
-
 
 
   return (
