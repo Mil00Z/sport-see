@@ -28,8 +28,8 @@
         weight:bold;
        }
     }
-    
   }
+
 }
 
 .score {
@@ -85,25 +85,39 @@
   align-items: center;
   gap:var(--gap);
   background:var(--light-color);
-  
-  .session {
-    display: flex;
-    justify-content: center;
-    width: fit-content;
-    height:fit-content;
-    padding:1rem;
-    flex-direction: column;
-    row-gap: var(--gap);
-    border: 1px solid var(--dark-color);
-    border-radius: var(--reg-radius);
-    
-      .day,
-      .calories,
-      .weight {
-        color:var(--dark-color);
-      }
 
+  .custom-tooltip {
+    padding:0.35rem;
+    background-color:var(--primary-color);
+    
+    .label{
+      color:var(--white-color);
+      padding-block:.25rem;
+      font : {
+        
+       }
+    }
   }
+  
+  // .session {
+  //   display: flex;
+  //   justify-content: center;
+  //   width: fit-content;
+  //   height:fit-content;
+  //   padding:1rem;
+  //   flex-direction: column;
+  //   row-gap: var(--gap);
+  //   border: 1px solid var(--dark-color);
+  //   border-radius: var(--reg-radius);
+    
+  //     .day,
+  //     .calories,
+  //     .weight {
+  //       color:var(--dark-color);
+  //     }
+
+  // }
+  
 }
 
 .dates {
