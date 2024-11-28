@@ -81,10 +81,22 @@
   width:100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
   gap:var(--gap);
   background:var(--light-color);
+  position: relative;
+
+  h2 {
+    --sizes:18px;
+    width:fit-content;
+    position: absolute;
+    top: var(--sizes);
+    left:var(--sizes);
+    margin-block:5px;
+    font-size:var(--sizes);
+    font-weight: 500;
+  }
 
   .custom-tooltip {
     padding:0.35rem;
