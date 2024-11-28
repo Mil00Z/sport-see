@@ -80,7 +80,7 @@ const Average = () =>{
                }}/>
             <Tooltip content={<CustomTooltip />}/>  
 
-            <Area type="monotone" dataKey="value" stroke="var(--white-color)" fillOpacity={1} fill="var(--primary-color)" />
+            <Area type="monotone" dataKey="value" stroke="var(--white-color)" fillOpacity={1} fill="var(--data-color)" />
 
           </AreaChart>
         </ResponsiveContainer>

@@ -10,7 +10,7 @@
 
 
 .average{
-  --data-color:var(--primary-color);
+  --data-color:var(--timer-color);
   display: flex;
   justify-content: center;
   align-content: center;
@@ -33,7 +33,7 @@
 }
 
 .score {
-  --data-color:var(--primary-color);
+  --data-color:var(--timer-color);
   display:flex;
   justify-content: center; 
   align-items: center;
@@ -59,7 +59,7 @@
 }
 
 .performance {
-  --data-color:var(--primary-color);
+  --data-color:var(--timer-color);
   --gap:1.5rem;
   display: flex;
   justify-content: center;

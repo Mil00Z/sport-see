@@ -53,7 +53,7 @@ const CustomTooltip = ({active,payload}) => {
             <YAxis yAxisId="right" type="number" dataKey="kilogram" orientation="right" domain={[minWeight - 10, 100]} hide={false} />
 
 
-            <Bar yAxisId="left" dataKey="calories" fill="var(--primary-color)" barSize={15} radius={[20,20,0,0]} />
+            <Bar yAxisId="left" dataKey="calories" fill="var(--timer-color)" barSize={15} radius={[20,20,0,0]} />
             <YAxis yAxisId ="left" type="number" dataKey="calories" orientation="left" domain={[0, maxKilCal + 50]} hide={true}  />
 
             <Tooltip content={<CustomTooltip />} cursor={{fill: 'rgba( 196 , 196 , 196,.5)'}}/>
