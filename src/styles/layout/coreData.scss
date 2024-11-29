@@ -2,7 +2,7 @@
   // height:100%;
   display: flex;
   column-gap: var(--reg-padding);
-  padding:var(--reg-padding);
+  padding-inline:var(--reg-padding);
   color:var(--black-color);
 
   h2 {
@@ -21,7 +21,7 @@
     justify-content: space-between;
     flex-grow:1;
     padding-inline:0;
-    row-gap:var(--reg-padding);
+    row-gap:calc(var(--reg-padding) + 1rem);
     background:var(--light-grey-color);
     
   }
