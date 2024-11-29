@@ -24,31 +24,42 @@
       color:var(--white-color);
       border-radius: var(--reg-radius);
       background:var(--current);
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       &.calo{
-      $current:blue;
-      --current:#{lighten($current,   40%)};
+      $current:#FF0000;
+      --current:#{lighten($current,40%)};
       }
 
       &.prot{
-       $current:green;
-       --current:#{lighten($current,   40%)};
+       $current:#4AB8FF;
+       --current:#{lighten($current,10%)};
       }
 
       &.gluc{
-        $current:yellow;
-        --current:#{lighten($current,   40%)};
+        $current:#F9CE23;
+        --current:#{lighten($current,40%)};
       }
       
       &.lipi{
-        $current:cyan;
-        --current:#{lighten($current,   40%)};
+        $current:#FD5181;
+        --current:#{lighten($current,30%)};
       
       }
     }
+
+    
+
+
   }
 
-
+  .icon-stats{
+    img {
+      width:30px;
+    }
+  }
 }
 
 .vitals{
@@ -57,14 +68,15 @@
   
   .label{
     font-size :1rem;
-    color:car(--light-grey-color);
+    font-weight:500;
+    color:#74798C;
   }
 
   .unit {
 
      font : {
       size:20px;
-      weight:bold;
+      weight:600;
      }
      
   }
