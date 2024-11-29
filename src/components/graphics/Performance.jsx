@@ -58,11 +58,14 @@ const Performance = () => {
 
         <ResponsiveContainer width="100%" height="100%">
 
-          <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dataSets} margin={{ top: 0, right: 35, bottom: 0, left: 35 }}>
-            <PolarGrid />
-            <PolarAngleAxis dataKey="subject" />
-            <Radar name="Benjamin" dataKey="value"  fill="var(--data-color)" fillOpacity={0.76} />
-          </RadarChart>
+          <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dataSets} margin={{ top: 0, right: 30, bottom: 0, left: 30 }}>
+          
+              <PolarGrid radialLines={false} />
+              <PolarAngleAxis dataKey="subject" stroke="var(--white-color)" tickLine={false} />
+       
+              <Radar dataKey="value" fill="var(--data-color)" stroke={"var(--data-color)"} fillOpacity={.66} payload={[{color:'white'}]}
+              />
+            </RadarChart>
 
         </ResponsiveContainer>  
 
