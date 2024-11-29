@@ -1,4 +1,9 @@
 import {useOutletContext} from 'react-router-dom'
+// import logo from '@assets/logo.svg'
+import calo from '@assets/energy.svg'
+import prot from '@assets/chicken.svg'
+import glu from '@assets/apple.svg'
+import lip from '@assets/cheeseburger.svg'
 
 
 import '@styles/layout/statsList.scss'
@@ -15,29 +20,32 @@ const StatsList = () => {
       { 
         label: "Calories",
         value: keyData?.calorieCount || 'X',
-        unit :"Kcal"
+        unit :"Kcal",
+        icon: calo
       },
       { 
         label: "Protéines",
         value: keyData?.proteinCount || 'X',
-        unit:"g"
+        unit:"g",
+        icon: prot
       },
       { 
         label: "Glucides",
         value: keyData?.carbohydrateCount || 'X',
-        unit:"g"
+        unit:"g",
+        icon: glu
       
        },
       { 
         label: "Lipides",
         value: keyData?.lipidCount || 'X',
-        unit:"g"
-        
+        unit:"g",
+        icon: lip
       }
     ]
 
 
-  
+    
   return(
 
     <div className="panel stats">
@@ -49,7 +57,9 @@ const StatsList = () => {
           return(
 
             <li key={`vitals-${index}`} className="icon icon-stats">
-              <span className={element.label.toLowerCase().substring(0,4)}>Icone</span>
+              <span className={element.label.toLowerCase().substring(0,4)}>
+              <img src={element.icon} />
+              </span>
               <div className="vitals">
                 <span className="unit">{element.value} {element.unit}</span>
                 <span className="label">{element.label}</span>
