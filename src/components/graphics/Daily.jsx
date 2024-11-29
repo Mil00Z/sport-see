@@ -62,7 +62,7 @@ const CustomLegend = ({payload}) => {
 
             <CartesianGrid strokeDasharray="8" vertical={false} />
 
-            <XAxis dataKey="day" />
+            <XAxis dataKey="day" tickLine={false}  />
 
             <Bar yAxisId="right" dataKey="kilogram" fill="var(--black-color)" barSize={10} radius={[20,20,0,0]} />
             <YAxis yAxisId="right" type="number" dataKey="kilogram" orientation="right" domain={[minWeight - 10, 100]} name={"Poids(kg)"} />
