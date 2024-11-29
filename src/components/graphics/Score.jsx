@@ -19,6 +19,9 @@ const Score = () =>{
 const finalScore = mockUser[0]?.todayScore || mockUser[0]?.score;
 
 
+let startingAngle = 90 ;
+
+
 useEffect(() => { 
 
   if (finalScore) {
@@ -27,12 +30,9 @@ useEffect(() => {
 
     setDataSets([
       {
-        "name": "Full",
-        "value": (1 - finalScore) * 100
-      },
-      {
         "name": "Score",
-        "value": (finalScore) * 100 
+        "value": finalScore,
+        "startingAngle":startingAngle 
       }
     ])
 
@@ -51,19 +51,20 @@ useEffect(() => {
 
       {finalScore ? (
         <>
+        <h2 className='graph-title'>Score</h2>
+
         <ResponsiveContainer width="100%" height="100%">
         
-            <PieChart width={900} height={900}>
-              <Pie data={dataSets} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} fill="var(--data-color)"/>
+            <PieChart width={900} height={900} fill="var(--white-color)">
 
-              <Tooltip />
-              
+              <Pie data={dataSets} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={90} cornerRadius={20}  fill="var(--timer-color)" startAngle={startingAngle} endAngle={(startingAngle + (finalScore * 360)).toFixed(0)}  />
+
             </PieChart>
 
         </ResponsiveContainer>
 
         <div className="final">
-        {finalScore * 100}%
+        {(finalScore * 100)}%
         <span className='baseline'>de votre objectif</span>
         </div> 
 
