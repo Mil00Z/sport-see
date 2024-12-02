@@ -1,5 +1,4 @@
 import {useOutletContext} from 'react-router-dom'
-// import logo from '@assets/logo.svg'
 import calo from '@assets/energy.svg'
 import prot from '@assets/chicken.svg'
 import glu from '@assets/apple.svg'

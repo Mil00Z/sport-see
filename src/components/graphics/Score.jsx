@@ -26,7 +26,7 @@ useEffect(() => {
 
   if (finalScore) {
 
-    setDataLife(dataLife=>!dataLife);
+    setDataLife(!dataLife);
 
     setDataSets([
       {
@@ -64,8 +64,8 @@ useEffect(() => {
         </ResponsiveContainer>
 
         <div className="final">
-        {(finalScore * 100)}%
-        <span className='baseline'>de votre objectif</span>
+          {(finalScore * 100)}%
+          <span className='baseline'>de votre objectif</span>
         </div> 
 
         </>) : (<Error dataLife={dataLife} />)
