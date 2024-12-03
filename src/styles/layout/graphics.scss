@@ -124,7 +124,7 @@
   background:var(--light-color);
   position: relative;
 
-  h2 {
+  .graph-title {
     --sizes:18px;
     width:fit-content;
     position: absolute;
@@ -146,6 +146,10 @@
         
        }
     }
+  }
+
+  .error {
+    color:var(--dark-color)
   }
   
   // .session {
