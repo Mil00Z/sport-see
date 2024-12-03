@@ -3,7 +3,7 @@ import {useState,useEffect} from 'react'
 
 const useFetching = (url) => {
   
-  const [data,setData] = useState({});
+  const [dataFetched,setDataFetched] = useState({});
   const [isLoaded,setLoaded] = useState(false);
   const [error, setError] = useState(false)
 
@@ -16,7 +16,7 @@ const useFetching = (url) => {
       const response = await fetch(url)
       const datas = await response.json()
 
-      setData(datas)
+      setDataFetched(datas)
 
       setLoaded(!isLoaded)
 
@@ -44,7 +44,7 @@ const useFetching = (url) => {
   },[url])
 
 
-  return { data, isLoaded}
+  return { dataFetched, isLoaded}
 }
 
 export default useFetching
