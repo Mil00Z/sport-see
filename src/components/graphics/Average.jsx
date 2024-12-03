@@ -1,9 +1,10 @@
 import {useState,useEffect} from 'react';
-import mockAverage from '@datas/mock/mockUser12Average.json'
+import {useOutletContext} from 'react-router-dom'
 
+import useFetching  from '@root/utils/hooks.jsx'
 import Error from '@components/error/Error';
 
-import { AreaChart, Area, XAxis,Tooltip, ResponsiveContainer,Rectangle } from 'recharts'
+import { AreaChart, Area, XAxis,Tooltip, ResponsiveContainer,Rectangle, YAxis } from 'recharts'
 
 import '@styles/layout/graphics.scss'
 
@@ -11,42 +12,63 @@ import '@styles/layout/graphics.scss'
 
 const Average = () =>{
 
-  let dataAverage = mockAverage[0];
+  const {mockDatas,userId} = useOutletContext()
 
-  const [dataLife,setDataLife] = useState(false);
+  const {dataFetched,isLoaded} = useFetching(`http://localhost:3000/user/${userId}/average-sessions`)
+
 
   const [dataSets,setDataSets] = useState([]);
 
-
+ 
+ 
 
   useEffect(() => { 
 
-    if (dataAverage) {
+    if (isLoaded) {
 
-      setDataLife(dataLife=>!dataLife);
+      setDataSets((dataSets) => {
 
-      setDataSets(dataSets => {
-
-        return dataAverage.sessions.map((item) => {
+        return dataFetched.data.sessions.map((item) => {
   
           return {
             "name": item.day,
             "value": item.sessionLength,
           }
     
-      })
+        })
 
-    });
+      });
+
+      console.log('data flow : API');
   
-    
     } else {
+
+      const userLocalData = mockDatas?.USER_AVERAGE_SESSIONS?.find((element) => element.userId === userId)
   
-      console.error('No data available to display');
+      if(userLocalData){
+
+        setDataSets((dataSets) => {
+
+          return userLocalData.sessions.map((item) => {
+    
+            return {
+              "name": item.day,
+              "value": item.sessionLength,
+            }
+      
+          })
   
+        });
+
+        console.log('data flow : Mock');
+
+      } else {
+        console.log('Finally Datas Error')
+      }
+
     }
 
-  },[dataAverage]);
-
+  },[userId]);
 
 
  const CustomTooltip = ({ active, payload}) => {
@@ -76,9 +98,9 @@ const CustomCursor = (props) => {
 
   return ( 
   
-    <div className="block average" data-user={dataAverage?.userId}>
+    <div className="block average" data-user={userId}>
 
-      {dataAverage ? (
+      {dataSets.length != 0 ? (
       <>
         <h2 className='graph-title'>Durée moyenne des sessions</h2>
 
@@ -91,6 +113,8 @@ const CustomCursor = (props) => {
                return days[tick - 1];
                }}/>
 
+            <YAxis datakey="value" domain={[0,90]} hide={true}/>
+
             <Tooltip content={<CustomTooltip />} />  
 
             <Area type="monotone" dataKey="value" stroke="var(--white-color)" strokeWidth={2} fillOpacity={1} fill="var(--data-color)" activeDot={{r:6, fill: "#fff",stroke:'rgba(255, 255, 255, 0.25)',strokeWidth: 8 }} />
@@ -98,7 +122,7 @@ const CustomCursor = (props) => {
           </AreaChart>
         </ResponsiveContainer>
       </>
-        ) : (<Error dataLife={dataLife} />)
+        ) : (<Error />)
 
 
       }
