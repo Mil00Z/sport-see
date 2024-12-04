@@ -9,20 +9,17 @@ import { AreaChart, Area, XAxis,Tooltip, ResponsiveContainer,Rectangle, YAxis } 
 import '@styles/layout/graphics.scss'
 
 
-
 const Average = () =>{
 
   const {mockDatas,userId} = useOutletContext()
 
   const {dataFetched,isLoaded} = useFetching(`http://localhost:3000/user/${userId}/average-sessions`)
 
-
   const [dataSets,setDataSets] = useState([]);
 
- 
- 
-
   useEffect(() => { 
+
+    console.log('is loaded',isLoaded);
 
     if (isLoaded) {
 
@@ -43,6 +40,7 @@ const Average = () =>{
   
     } else {
 
+      
       const userLocalData = mockDatas?.USER_AVERAGE_SESSIONS?.find((element) => element.userId === userId)
   
       if(userLocalData){
@@ -98,7 +96,7 @@ const CustomCursor = (props) => {
 
   return ( 
   
-    <div className="block average" data-user={userId}>
+    <div className="block average">
 
       {dataSets.length != 0 ? (
       <>
