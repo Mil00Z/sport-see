@@ -16,7 +16,7 @@ function Root() {
         <Activities />
         <main className='core-content'>
           <Navigation />
-          <Outlet context={{mockUser,mockDatas,userId:fixedUserId}} />
+          <Outlet context={{mockDatas,userId:fixedUserId}} />
         </main>
     </>
   )
