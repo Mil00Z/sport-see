@@ -6,15 +6,20 @@ import '@styles/layout/onboarding.scss'
 
 const Onboarding = () => {
 
-const {mockUser} = useOutletContext();
+const {mockDatas,userId} = useOutletContext();
 
 
-//User Fake Name
+//User
 let now = new Date();
 let evening = now.getHours() >= 17 || now.getHours() < 7 ;
 let userTiming = evening ? 'Bonsoir' : 'Bonjour';
 
-let userName = mockUser[0]?.userInfos?.firstName || 'Random Guy';
+
+const userLocalData = mockDatas?.USER_MAIN_DATA?.find((element) => element.id === userId)
+
+let userName = userLocalData?.userInfos?.firstName || 'BenJ';
+let lastName = userLocalData?.userInfos?.lastName;
+
 
 let userBaseline = 'Félicitation ! Vous avez explosé vos objectifs hier 👏'
 
@@ -34,7 +39,7 @@ useEffect(() => {
   return (
    
       <section className="onboarding">
-        <h1 className="main-title">{userTiming} <span className="user-name">{userName}</span> !</h1>
+        <h1 className="main-title">{userTiming} <span className="user-name" data-user-lastname={lastName}>{userName}</span> !</h1>
         <p className="baseline">{userBaseline}</p>
       </section>
   
