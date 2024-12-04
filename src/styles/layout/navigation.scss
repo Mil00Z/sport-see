@@ -20,6 +20,12 @@
   column-gap: var(--gap);
   }
 
+  .link {
+    &:hover {
+      color:var(--timer-color);
+    }
+  }
+
 }
 
 
