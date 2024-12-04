@@ -10,14 +10,13 @@ import '@styles/layout/graphics.scss'
 
 const Score = () =>{
 
-  const {mockDatas,userId} = useOutletContext()
+  const {mockDatas,userId} = useOutletContext();
 
-  const {dataFetched,isLoaded} = useFetching(`http://localhost:3000/user/${userId}`)
+  const {dataFetched,isLoaded} = useFetching(`http://localhost:3000/user/${userId}`);
 
   const [dataSets,setDataSets] = useState([]);
 
-  const [finalScore,setFinalScore] = useState(null);
-
+  const [finalScore,setFinalScore] = useState(0);
 
 
 let startingAngle = 90 ;
@@ -25,46 +24,60 @@ let startingAngle = 90 ;
 
 useEffect(() => { 
 
-let getScore
+let getScore;
 
-  if (isLoaded) {
+  if (isLoaded && dataFetched) {
 
      getScore = dataFetched.data?.todayScore || dataFetched.data?.score;
 
-    setDataSets((dataSets) => [
-      {
-        "name": "Score",
-        "value": finalScore,
-        "startingAngle":startingAngle,
-      }
-    ])
+     console.log("coucou fetch")
+     console.log(userLocalData.score)
+
+      setDataSets((dataSets) => {
+
+        return [
+          {
+          "name": "Score",
+          "value": getScore,
+          "startingAngle":startingAngle,
+          }
+        ]
+
+      })
 
     console.log('data flow : API');
 
   } else {
 
-    const userLocalData = mockDatas?.USER_MAIN_DATA?.find((element) => element.userId === userId)
-
+    const userLocalData = mockDatas?.USER_MAIN_DATA?.find((element) => element.id === userId)
 
     if(userLocalData) {
 
-      getScore = userLocalData.data?.todayScore || userLocalData.data?.score;
+      getScore = userLocalData.todayScore || userLocalData.score;
 
-      setDataSets((dataSets) => [
-        {
-          "name": "Score",
-          "value": finalScore,
-          "startingAngle":startingAngle,
-        }
-      ])
+      console.log("coucou local")
+     
+      setDataSets((dataSets) => { 
+
+        return [
+          {
+            "name": "Score",
+            "value": getScore,
+            "startingAngle":startingAngle,
+          }
+        ]
+
+      })
 
     }
 
+    
+
   }
 
-  setFinalScore(getScore)
+ setFinalScore(getScore);
 
-},[userId,isLoaded,finalScore]);
+},[userId,isLoaded]);
 
 
   return ( 
@@ -86,7 +99,7 @@ let getScore
         </ResponsiveContainer>
 
         <div className="final">
-          {(finalScore * 100)}%
+          {(finalScore * 100)} %
           <span className='baseline'>de votre objectif</span>
         </div> 
 

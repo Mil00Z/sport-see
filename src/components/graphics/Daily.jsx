@@ -25,7 +25,7 @@ const Daily = () =>{
 
 useEffect(() => { 
 
-  if (isLoaded) {
+  if (isLoaded && dataFetched) {
 
     setDataSets((dataSets) => {
 

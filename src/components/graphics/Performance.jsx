@@ -21,8 +21,7 @@ const Performance = () => {
 
   useEffect(() => { 
 
-    if (isLoaded) {
-
+    if (isLoaded && dataFetched) {
 
       setDataSets((dataSets) => {
 
@@ -41,7 +40,6 @@ const Performance = () => {
       console.log('data flow : API');
   
     } else {
-
 
       const userLocalData = mockDatas?.USER_PERFORMANCE?.find((element) => element.userId === userId)
 
