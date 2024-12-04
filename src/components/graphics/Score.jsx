@@ -1,22 +1,23 @@
 import { useState,useEffect } from 'react';
 import {useOutletContext} from 'react-router-dom'
 
+import useFetching  from '@root/utils/hooks.jsx'
 import Error from '@components/error/Error';
 
-import {PieChart, Pie, Cell,Tooltip, ResponsiveContainer} from 'recharts'
+import {PieChart, Pie, ResponsiveContainer} from 'recharts'
 
 import '@styles/layout/graphics.scss'
 
 const Score = () =>{
 
-  const {mockUser}= useOutletContext();
+  const {mockDatas,userId} = useOutletContext()
 
-  const [dataLife,setDataLife] = useState(false);
+  const {dataFetched,isLoaded} = useFetching(`http://localhost:3000/user/${userId}`)
 
   const [dataSets,setDataSets] = useState([]);
 
+  const [finalScore,setFinalScore] = useState(null);
 
-const finalScore = mockUser[0]?.todayScore || mockUser[0]?.score;
 
 
 let startingAngle = 90 ;
@@ -24,32 +25,53 @@ let startingAngle = 90 ;
 
 useEffect(() => { 
 
-  if (finalScore) {
+let getScore
 
-    setDataLife(!dataLife);
+  if (isLoaded) {
 
-    setDataSets([
+     getScore = dataFetched.data?.todayScore || dataFetched.data?.score;
+
+    setDataSets((dataSets) => [
       {
         "name": "Score",
         "value": finalScore,
-        "startingAngle":startingAngle 
+        "startingAngle":startingAngle,
       }
     ])
 
+    console.log('data flow : API');
+
   } else {
 
-    console.error('No data available to display');
+    const userLocalData = mockDatas?.USER_MAIN_DATA?.find((element) => element.userId === userId)
+
+
+    if(userLocalData) {
+
+      getScore = userLocalData.data?.todayScore || userLocalData.data?.score;
+
+      setDataSets((dataSets) => [
+        {
+          "name": "Score",
+          "value": finalScore,
+          "startingAngle":startingAngle,
+        }
+      ])
+
+    }
 
   }
 
-},[finalScore]);
+  setFinalScore(getScore)
+
+},[userId,isLoaded,finalScore]);
 
 
   return ( 
   
-    <div className="block score">
+    <div className="block score" data-score-error={finalScore ?? 'merde'}>
 
-      {finalScore ? (
+      {dataSets.length !== 0 ? (
         <>
         <h2 className='graph-title'>Score</h2>
 
@@ -68,7 +90,7 @@ useEffect(() => {
           <span className='baseline'>de votre objectif</span>
         </div> 
 
-        </>) : (<Error dataLife={dataLife} />)
+        </>) : (<Error />)
       }
 
     </div>
