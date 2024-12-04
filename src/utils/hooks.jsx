@@ -15,17 +15,19 @@ const useFetching = (url) => {
       const response = await fetch(url)
       const datas = await response.json()
 
-      setDataFetched(datas)
-
-      setLoaded(true)
+      return datas 
 
     } catch(err) {
 
       console.error(err)
 
-      setError(!error)
+      setError(true)
 
     }
+
+    setDataFetched((dataFetched) => datas ?? null)
+
+    setLoaded(true)
 
   }
 
