@@ -1,60 +1,80 @@
 import { useState,useEffect } from 'react';
-import mockPerformance from '@datas/mock/mockUser12Performance.json'
+import {useOutletContext} from 'react-router-dom'
+
+import useFetching  from '@root/utils/hooks.jsx'
 import Error from '@components/error/Error';
 
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis,ResponsiveContainer } from 'recharts';
 
 import '@styles/layout/graphics.scss'
 
 
 const Performance = () => {
 
-  const dataPerf = mockPerformance[0];  
 
-  const [dataLife,setDataLife] = useState(false);
+  const {mockDatas,userId} = useOutletContext()
+
+  const {dataFetched,isLoaded} = useFetching(`http://localhost:3000/user/${userId}/performance`)
 
   const [dataSets,setDataSets] = useState([]);
-
-  // const values = Object.keys(dataPerf.data).map(key => dataPerf.data[key].value);
-
-  // const criterias = Object.keys(dataPerf.kind).map(key => dataPerf.kind[key]).reverse();
 
 
   useEffect(() => { 
 
-    if (dataPerf) {
+    if (isLoaded) {
 
-      setDataLife(dataLife=>!dataLife);
 
-      setDataSets(dataSets => {
+      setDataSets((dataSets) => {
 
-        return dataPerf.data.map((item) => {
+        return dataFetched.data.data.map((item) => {
   
           return {
-            "subject": dataPerf.kind[item.kind],
+            "subject": dataFetched.data.kind[item.kind],
             "value": item.value,
-            "fullMark":450
+            "fullMark":300
           }
-
-        }).reverse()
+    
+        })
 
       });
+
+      console.log('data flow : API');
   
     } else {
-  
-      console.error('No data available to display');
-  
-    }
 
-  },[dataPerf]);
+
+      const userLocalData = mockDatas?.USER_PERFORMANCE?.find((element) => element.userId === userId)
+
+      if(userLocalData) {
+  
+        setDataSets((dataSets) => {
+
+          return userLocalData.data.map((item) => {
+    
+            return {
+              "subject": userLocalData.kind[item.kind],
+              "value": item.value,
+              "fullMark":300
+            }
+      
+          })
+  
+        });
+
+        console.log('data flow : Mock');
+      
+    }
+  }
+
+  },[userId]);
 
   
   return ( 
   
-    <div className="block performance" data-user={dataPerf?.userId}>
+    <div className="block performance">
 
 
-      {dataPerf ? (
+      {dataSets.length != 0 ? (
 
         <ResponsiveContainer width="100%" height="100%">
 
@@ -69,7 +89,7 @@ const Performance = () => {
 
         </ResponsiveContainer>  
 
-      ):( <Error dataLife={dataLife}/>)
+      ):( <Error />)
 
     }
 
