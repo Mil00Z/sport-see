@@ -1,4 +1,9 @@
+import {useState,useEffect} from 'react';
 import {useOutletContext} from 'react-router-dom'
+
+import useFetching  from '@root/utils/hooks.jsx'
+import Error from '@components/error/Error';
+
 import calo from '@assets/energy.svg'
 import prot from '@assets/chicken.svg'
 import glu from '@assets/apple.svg'
@@ -9,49 +14,107 @@ import '@styles/layout/statsList.scss'
 
 const StatsList = () => {
 
-  const {mockUser} = useOutletContext();
+  const {mockDatas,userId} = useOutletContext();
 
-  const {keyData} = mockUser[0];
+  const {dataFetched,isLoaded} = useFetching(`http://localhost:3000/user/${userId}`)
 
+  const [dataSets,setDataSets] = useState([]);
 
-  //Create UI to display Datas
-    let vitals = [
-      { 
-        label: "Calories",
-        value: keyData?.calorieCount || 'X',
-        unit :"Kcal",
-        icon: calo
-      },
-      { 
-        label: "Protéines",
-        value: keyData?.proteinCount || 'X',
-        unit:"g",
-        icon: prot
-      },
-      { 
-        label: "Glucides",
-        value: keyData?.carbohydrateCount || 'X',
-        unit:"g",
-        icon: glu
-      
-       },
-      { 
-        label: "Lipides",
-        value: keyData?.lipidCount || 'X',
-        unit:"g",
-        icon: lip
+  
+  useEffect(() => { 
+
+    if(isLoaded && dataFetched){
+
+      setDataSets((dataSets) => {
+
+        return [
+          { 
+            label: "Calories",
+            value: dataFetched.data?.keyData?.calorieCount || 'X',
+            unit :"Kcal",
+            icon: calo
+          },
+          { 
+            label: "Protéines",
+            value: dataFetched.data?.keyData?.proteinCount || 'X',
+            unit:"g",
+            icon: prot
+          },
+          { 
+            label: "Glucides",
+            value: dataFetched.data?.keyData?.carbohydrateCount || 'X',
+            unit:"g",
+            icon: glu
+          
+           },
+          { 
+            label: "Lipides",
+            value: dataFetched.data?.keyData?.lipidCount || 'X',
+            unit:"g",
+            icon: lip
+          }
+
+        ]
+
+     })
+
+      console.log('data flow : API');
+
+    } else {
+
+      const userLocalData = mockDatas?.USER_MAIN_DATA?.find((element) => element.id === userId);
+
+      if(userLocalData){
+
+        setDataSets((dataSets) => {
+
+          return [
+            { 
+              label: "Calories",
+              value: userLocalData.keyData?.calorieCount || 'X',
+              unit :"Kcal",
+              icon: calo
+            },
+            { 
+              label: "Protéines",
+              value: userLocalData.keyData?.proteinCount || 'X',
+              unit:"g",
+              icon: prot
+            },
+            { 
+              label: "Glucides",
+              value: userLocalData.keyData?.carbohydrateCount || 'X',
+              unit:"g",
+              icon: glu
+            
+             },
+            { 
+              label: "Lipides",
+              value: userLocalData.keyData?.lipidCount || 'X',
+              unit:"g",
+              icon: lip
+            }
+          ]
+
+        });
+
+        console.log('data flow : Mock');
+
       }
-    ]
+    }
+
+  },[userId,isLoaded])
 
 
-    
   return(
 
     <div className="panel stats">
-      
-      <ul className="stats-list">
 
-        {vitals.map((element,index) => {
+      { dataSets.length !== 0 ? (
+
+        <ul className="stats-list">
+
+        {dataSets.map((element,index) => {
 
           return(
 
@@ -67,9 +130,12 @@ const StatsList = () => {
           )
 
         })
-         }
+        }
 
-      </ul>
+        </ul>) : (<Error />)
+    }
+      
+     
   </div>
 
   )
