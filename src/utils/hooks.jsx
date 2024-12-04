@@ -10,7 +10,6 @@ const useFetching = (url) => {
 
   async function fetchDatas(url){
 
-   
     try{
 
       const response = await fetch(url)
@@ -18,7 +17,7 @@ const useFetching = (url) => {
 
       setDataFetched(datas)
 
-      setLoaded(!isLoaded)
+      setLoaded(true)
 
     } catch(err) {
 
@@ -34,7 +33,9 @@ const useFetching = (url) => {
   useEffect(() => {
 
     if (!url) {
+
       return ;
+
     } else {
 
       fetchDatas(url)
