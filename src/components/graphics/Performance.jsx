@@ -76,7 +76,7 @@ const Performance = () => {
 
         <ResponsiveContainer width="100%" height="100%">
 
-          <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dataSets} margin={{ top: 0, right: 30, bottom: 0, left: 30 }}>
+          <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dataSets} margin={{ top: 0, right: 40, bottom: 0, left: 40 }}>
           
               <PolarGrid radialLines={false} />
               <PolarAngleAxis dataKey="subject" stroke="var(--white-color)" tickLine={false} />
