@@ -30,9 +30,6 @@ let getScore;
 
      getScore = dataFetched.data?.todayScore || dataFetched.data?.score;
 
-     console.log("coucou fetch")
-     console.log(userLocalData.score)
-
       setDataSets((dataSets) => {
 
         return [
@@ -55,8 +52,6 @@ let getScore;
 
       getScore = userLocalData.todayScore || userLocalData.score;
 
-      console.log("coucou local")
-     
       setDataSets((dataSets) => { 
 
         return [
