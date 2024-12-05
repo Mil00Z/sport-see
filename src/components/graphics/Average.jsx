@@ -1,5 +1,6 @@
 import {useState,useEffect} from 'react';
 import {useOutletContext} from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import useFetching  from '@root/utils/hooks.jsx'
 import Error from '@components/error/Error';
@@ -130,6 +131,19 @@ const CustomCursor = (props) => {
 )  
 
 
+}
+
+Average.propTypes = {
+  mockDatas: PropTypes.shape({
+    USER_AVERAGE_SESSIONS: PropTypes.arrayOf(PropTypes.shape({
+      userId: PropTypes.number,
+      sessions: PropTypes.arrayOf(PropTypes.shape({
+        day: PropTypes.number,
+        sessionLength: PropTypes.number
+      }))
+    }))
+  }),
+  userId: PropTypes.number
 }
 
 export default Average

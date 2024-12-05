@@ -1,6 +1,12 @@
 import {useState,useEffect} from 'react'
 
-
+/**
+ * Custom hook for fetching data from a URL
+ * @param {string} url - The URL to fetch data from
+ * @returns {Object} An object containing:
+ *   - dataFetched: The fetched data or null if no data
+ *   - isLoaded: Boolean indicating if the data has finished loading
+ */
 const useFetching = (url) => {
   
   const [dataFetched,setDataFetched] = useState({});
@@ -8,6 +14,10 @@ const useFetching = (url) => {
   const [error, setError] = useState(false)
 
 
+  /**
+   * Fetches data from the provided URL
+   * @param {string} url - The URL to fetch data from
+   */
   async function fetchDatas(url){
 
     try{
@@ -32,6 +42,9 @@ const useFetching = (url) => {
   }
 
 
+  /**
+   * Effect hook to fetch data when the URL changes
+   */
   useEffect(() => {
 
     if (!url) {
@@ -51,4 +64,3 @@ const useFetching = (url) => {
 }
 
 export default useFetching
-

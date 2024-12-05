@@ -1,5 +1,6 @@
 import { useState,useEffect } from 'react';
 import {useOutletContext} from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import useFetching  from '@root/utils/hooks.jsx'
 import Error from '@components/error/Error';
@@ -98,4 +99,19 @@ const Performance = () => {
   )
 
 }
+
+Performance.propTypes = {
+  mockDatas: PropTypes.shape({
+    USER_PERFORMANCE: PropTypes.arrayOf(PropTypes.shape({
+      userId: PropTypes.number,
+      kind: PropTypes.objectOf(PropTypes.string),
+      data: PropTypes.arrayOf(PropTypes.shape({
+        value: PropTypes.number,
+        kind: PropTypes.number
+      }))
+    }))
+  }),
+  userId: PropTypes.number
+}
+
 export default Performance

@@ -1,5 +1,6 @@
 import {useState,useEffect} from 'react';
 import {useOutletContext} from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import useFetching  from '@root/utils/hooks.jsx'
 import Error from '@components/error/Error';
@@ -8,7 +9,6 @@ import calo from '@assets/energy.svg'
 import prot from '@assets/chicken.svg'
 import glu from '@assets/apple.svg'
 import lip from '@assets/cheeseburger.svg'
-
 
 import '@styles/layout/statsList.scss'
 
@@ -141,6 +141,21 @@ const StatsList = () => {
   )
 
 
-
 }
+
+StatsList.propTypes = {
+  mockDatas: PropTypes.shape({
+    USER_MAIN_DATA: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      keyData: PropTypes.shape({
+        calorieCount: PropTypes.number,
+        proteinCount: PropTypes.number,
+        carbohydrateCount: PropTypes.number,
+        lipidCount: PropTypes.number
+      })
+    }))
+  }),
+  userId: PropTypes.number
+}
+
 export default StatsList

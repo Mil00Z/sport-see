@@ -1,5 +1,6 @@
 import {useState,useEffect} from 'react';
 import {useOutletContext} from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import useFetching  from '@root/utils/hooks.jsx'
 import Error from '@components/error/Error';
@@ -8,22 +9,52 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,ResponsiveC
 
 import '@styles/layout/graphics.scss'
 
+/**
+ * @module Daily
+ * @description A component that displays daily activity data using a bar chart.
+ * The chart shows both kilogram (weight) and calories burned data for each day.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <Daily />
+ * )
+ */
 const Daily = () =>{
 
+  /**
+   * @type {Object} Context data containing mock data and user ID
+   */
   const {mockDatas,userId} = useOutletContext()
 
+  /**
+   * @type {Object} Result of the fetch operation
+   * @property {Object} dataFetched - The fetched activity data
+   * @property {boolean} isLoaded - Loading state indicator
+   */
   const {dataFetched,isLoaded} = useFetching(`http://localhost:3000/user/${userId}/activity`)
 
+  /**
+   * @type {Array} State to store the processed activity datasets
+   */
   const [dataSets,setDataSets] = useState([]);
 
-
+  /**
+   * @type {number} Minimum weight value from the dataset
+   */
   let minWeight = Math.min(...dataSets.map((item) => item.kilogram));
 
+  /**
+   * @type {number} Maximum calories value from the dataset
+   */
   let maxKilCal = Math.max(...dataSets.map((item) => item.calories))
 
-
-
-useEffect(() => { 
+  /** 
+   * Effect hook to process and set activity data
+   * Transforms the raw activity data into a format suitable for the chart
+   * Falls back to mock data if API data is not available
+   */
+  useEffect(() => { 
 
   if (isLoaded && dataFetched) {
 
@@ -136,6 +167,27 @@ const CustomTooltip = ({active,payload}) => {
 )  
 
 
+}
+
+/**
+ * PropTypes for the Daily component
+ * @type {Object}
+ * @property {Object} mockDatas - Mock data object containing user activity information
+ * @property {Array} mockDatas.USER_ACTIVITY - Array of user activity records
+ * @property {number} mockDatas.USER_ACTIVITY[].userId - User ID for the activity record
+ */
+Daily.propTypes = {
+  mockDatas: PropTypes.shape({
+    USER_ACTIVITY: PropTypes.arrayOf(PropTypes.shape({
+      userId: PropTypes.number,
+      sessions: PropTypes.arrayOf(PropTypes.shape({
+        day: PropTypes.string,
+        kilogram: PropTypes.number,
+        calories: PropTypes.number
+      }))
+    }))
+  }),
+  userId: PropTypes.number
 }
 
 export default Daily
