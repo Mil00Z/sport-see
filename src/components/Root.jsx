@@ -9,8 +9,8 @@ import '@styles/main.scss'
 
 function Root() {
 
-  let fixedUserId = 12
-
+  let fixedUserId = 18
+  
   return (
     <>
         <Activities />
