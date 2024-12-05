@@ -28,7 +28,7 @@ let getScore;
 
   if (isLoaded && dataFetched) {
 
-     getScore = dataFetched.data?.todayScore || dataFetched.data?.score;
+     getScore = dataFetched?.todayScore || dataFetched?.score;
 
       setDataSets((dataSets) => {
 

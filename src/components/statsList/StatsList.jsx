@@ -30,26 +30,26 @@ const StatsList = () => {
         return [
           { 
             label: "Calories",
-            value: dataFetched.data?.keyData?.calorieCount || 'X',
+            value: dataFetched?.keyData?.calorieCount || 'X',
             unit :"Kcal",
             icon: calo
           },
           { 
             label: "Protéines",
-            value: dataFetched.data?.keyData?.proteinCount || 'X',
+            value: dataFetched?.keyData?.proteinCount || 'X',
             unit:"g",
             icon: prot
           },
           { 
             label: "Glucides",
-            value: dataFetched.data?.keyData?.carbohydrateCount || 'X',
+            value: dataFetched?.keyData?.carbohydrateCount || 'X',
             unit:"g",
             icon: glu
           
            },
           { 
             label: "Lipides",
-            value: dataFetched.data?.keyData?.lipidCount || 'X',
+            value: dataFetched?.keyData?.lipidCount || 'X',
             unit:"g",
             icon: lip
           }

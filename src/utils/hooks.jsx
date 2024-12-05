@@ -8,14 +8,14 @@ const useFetching = (url) => {
   const [error, setError] = useState(false)
 
 
-  async function fetchDatas(url){
+  async function fetchDatas(url) {
 
     try{
 
       const response = await fetch(url)
       const datas = await response.json()
 
-      setDataFetched((dataFetched) => datas ?? null)
+      setDataFetched((dataFetched) => datas.data ?? null)
 
       setLoaded(true)
 
@@ -23,7 +23,7 @@ const useFetching = (url) => {
 
     } catch(err) {
 
-      console.error(err)
+      // console.error(err)
 
       setError(true)
 

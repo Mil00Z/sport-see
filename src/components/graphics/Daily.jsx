@@ -29,7 +29,7 @@ useEffect(() => {
 
     setDataSets((dataSets) => {
 
-      return dataFetched.data.sessions.map((item) => {
+      return dataFetched.sessions.map((item) => {
 
         return {
           "day": item.day,

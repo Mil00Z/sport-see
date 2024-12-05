@@ -25,7 +25,7 @@ const Average = () =>{
 
       setDataSets((dataSets) => {
 
-        return dataFetched.data.sessions.map((item) => {
+        return dataFetched.sessions.map((item) => {
   
           return {
             "name": item.day,

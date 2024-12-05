@@ -25,10 +25,10 @@ const Performance = () => {
 
       setDataSets((dataSets) => {
 
-        return dataFetched.data.data.map((item) => {
+        return dataFetched.data.map((item) => {
   
           return {
-            "subject": dataFetched.data.kind[item.kind],
+            "subject": dataFetched.kind[item.kind],
             "value": item.value,
             "fullMark":300
           }
