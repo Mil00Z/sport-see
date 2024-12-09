@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import Root from '@components/Root'
+import Profil from '@components/profil/Profil'
 import Home from '@components/home/Home'
 import NotFound from '@components/notFound/NotFound'
 
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path:'/profil/:id',
+        element:<Profil />
       },
       {
         path:'*',
