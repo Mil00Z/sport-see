@@ -3,7 +3,7 @@ button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   color:var(--white-color);
-  background-color: var(--primay-color);
+  background-color: var(--primary-color);
   cursor: pointer;
   border-radius: var(--btn-radius);
   border: 1px solid transparent;
@@ -12,9 +12,15 @@ button {
   &:hover {
     background-color: var(--cool-color);
   }
+
+  &.profil{
+    margin-inline:1rem;
+  }
 }
 
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+
