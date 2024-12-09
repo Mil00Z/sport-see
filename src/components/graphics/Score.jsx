@@ -1,12 +1,38 @@
 import { useState,useEffect } from 'react';
 import {useOutletContext} from 'react-router-dom'
 
+
 import useFetching  from '@root/utils/hooks.jsx'
 import Error from '@components/error/Error';
 
 import {PieChart, Pie, ResponsiveContainer} from 'recharts'
 
 import '@styles/layout/graphics.scss'
+
+/**
+ * Composant Score : Affiche le Score d'objectif
+ * @componant Score
+ * @returns {JSX.Element}
+ */
+
+
+/**
+ * Outlet Context
+ * @returns {Object}  => Objet de données retourné par OutletContext
+ */
+
+
+/**
+ * Import de Hooks + States
+ * @property {Object} dataFetched => Objet de données retourné par UseFetching
+ * @property {boolean} isLoaded => State de chargement
+ * @property {Object} mockDatas => Objet de données retourné par OutletContext
+ * @property {number} userId => Identifiant de l'utilisateur
+ * @property {array} dataSets => Tableau de données pour le render, modifié suivant les données récupérées
+ * @property {number} finalScore => Score de l'utilisateur
+ * 
+ */
+
 
 const Score = () =>{
 
@@ -18,7 +44,8 @@ const Score = () =>{
 
   const [finalScore,setFinalScore] = useState(0);
 
-
+  
+// {number} => Angle de départ du graphique circulaire
 let startingAngle = 90 ;
 
 
@@ -103,8 +130,10 @@ let getScore;
 
     </div>
 
-)  
+  )  
 
 }
+
+
 
 export default Score

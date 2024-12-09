@@ -1,4 +1,3 @@
-import { useState } from 'react'
 
 import Daily from '@components/graphics/Daily'
 import Average from '@components/graphics/Average'
@@ -13,10 +12,10 @@ const Graphics = () =>{
 return (
   <>
     <div className="panel graphics">
-        <Daily/>
-        <Average/>
+        <Daily />
+        <Average />
         <Performance />
-        <Score/>
+        <Score />
     </div>
   </>
 

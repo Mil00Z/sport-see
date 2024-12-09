@@ -8,6 +8,33 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,ResponsiveC
 
 import '@styles/layout/graphics.scss'
 
+
+
+/**
+ * Composant Daily : affiche le graphique des activités quotidiennes (calories et poids) sur 7 jours
+ * @componant Daily
+ * @returns {JSX.Element}
+ */
+
+
+/**
+ * Outlet Context
+ * @returns {Object}  => Objet de données retourné par OutletContext
+ */
+
+
+/**
+ * Import de Hooks + States
+ * @property {Object} dataFetched => Objet de données retourné par UseFetching
+ * @property {boolean} isLoaded => State de chargement
+ * @property {Object} mockDatas => Objet de données retourné par OutletContext
+ * @property {number} userId => Identifiant de l'utilisateur
+ * @property {array} dataSets => Tableau de données pour le render, modifié suivant les données récupérées
+ * 
+ */
+
+
+
 const Daily = () =>{
 
   const {mockDatas,userId} = useOutletContext()
@@ -17,8 +44,11 @@ const Daily = () =>{
   const [dataSets,setDataSets] = useState([]);
 
 
+  // {number} => Récupération du poids Min dans le tableau des poids
   let minWeight = Math.min(...dataSets.map((item) => item.kilogram));
+ 
 
+  // {number} => Récupération de la dépense Max dans le tableau des calories
   let maxKilCal = Math.max(...dataSets.map((item) => item.calories))
 
 

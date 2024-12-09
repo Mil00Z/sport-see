@@ -4,9 +4,33 @@ import {useOutletContext} from 'react-router-dom'
 import useFetching  from '@root/utils/hooks.jsx'
 import Error from '@components/error/Error';
 
-import { AreaChart, Area, XAxis,Tooltip, ResponsiveContainer,Rectangle, YAxis } from 'recharts'
+import { AreaChart, Area, XAxis,Tooltip, ResponsiveContainer, YAxis } from 'recharts'
 
 import '@styles/layout/graphics.scss'
+
+
+/**
+ * Composant Average : affiche le graphique des temps d'activités sur 7 jours
+ * @componant Average
+ * @returns {JSX.Element}
+ */
+
+
+/**
+ * Outlet Context
+ * @returns {Object} => Objet de données retourné par OutletContext
+ */
+
+
+/**
+ * Import de Hooks + States
+ * @property {Object} dataFetched => Objet de données retourné par UseFetching
+ * @property {boolean} isLoaded => State de chargement
+ * @property {Object} mockDatas => Objet de données retourné par OutletContext
+ * @property {number} userId => Identifiant de l'utilisateur
+ * @property {array} dataSets => Tableau de données pour le render, modifié suivant les données récupérées
+ * 
+ */
 
 
 const Average = () =>{
