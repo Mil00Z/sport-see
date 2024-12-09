@@ -1,5 +1,5 @@
 
-const Error = (props) => {
+const Error = () => {
 
   return (
 
