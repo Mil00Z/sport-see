@@ -1,6 +1,6 @@
 import { Outlet} from 'react-router-dom'
-import mockUser from '@datas/mock/mockUser12.json'
 import mockDatas from '@datas/mock/mockDatas.js'
+import PropsTypes from 'prop-types'
 
 import Navigation from '@components/navigation/Navigation'
 import Activities from '@components/activities/Activities'
@@ -10,7 +10,7 @@ import '@styles/main.scss'
 function Root() {
 
   let fixedUserId = 18
-  
+
   return (
     <>
         <Activities />
@@ -22,4 +22,13 @@ function Root() {
   )
 }
 
+Outlet.propTypes = {
+  context: PropsTypes.shape({ 
+    mockDatas: PropsTypes.object.isRequired,
+    userId: PropsTypes.number.isRequired
+  }).isRequired
+};
+
 export default Root
+
+
