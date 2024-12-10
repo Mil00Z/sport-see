@@ -1,35 +1,24 @@
-import {useParams,useOutletContext} from 'react-router-dom';
-
-import useFetching  from '@root/utils/hooks.jsx'
-
+import {useParams} from 'react-router-dom';
 
 import Onboarding from '@components/onboarding/Onboarding'
 import CoreData from '@components/coreData/coreData'
 
 
-const Home = () => {
+const Profil = () => {
 
-  const {mockDatas} = useOutletContext();
- 
+  // {string} => Récupération de l'id de l'utilisateur
   const {id} = useParams();
 
-  //Get ALl datas and dispatch good url Product
-  // let details = mockDatas.find((data)=> {
-
-  //   return data.id === getParams.id
-
-  // })
-
-
-  console.log('id params', id);
+  // {number} => transtypage en number
+  let userId = parseInt(id);
 
   return (
     <>
-      <Onboarding />
-      <CoreData />
+      <Onboarding userId={userId} />
+      <CoreData userId={userId} />
     </>
   )
 
 }
 
-export default Home
+export default Profil
