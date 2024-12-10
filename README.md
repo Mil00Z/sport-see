@@ -5,7 +5,47 @@
 👉 https://sport-see-ocr.vercel.app/
 
 
-## React + Vite
+## Description du projet
+
+Ce projet est une application web qui permet de visualiser les données sportives fictives de profils utilisateurs.
+L'application utilise React, React Router, Recharts.
+
+## Fonctionnalités
+
+* Affichage des données sportives de profil utilisateur dans différentes graphiques
+
+
+## Dépendances
+
+* React
+* React Router
+* PropTypes
+* Recharts
+* SASS
+
+## Installation
+
+1. Cloner le dépôt Git
+2. Installer les dépendances avec npm / pnpm `install`
+3. Lancer l'application avec npm / pnpm `run dev`
+
+## Utilisation
+
+1. Ouvrir l'application dans un navigateur
+2. Choisir l'un des liens utilisateur 
+
+
+## Structure du projet
+
+* `src/`: dossier contenant les fichiers sources de l'application
+* `src/components/`: dossier contenant les composants de l'application
+* `src/assets/`: dossier contenant les assets visuels
+* `src/datas/`: dossier contenant les mock de données
+* `src/styles/`: dossier contenant les styles SCSS
+* `src/utils/`: dossier contenant le service de gestion d'appel à l'API
+
+
+## BUNDLE : React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
