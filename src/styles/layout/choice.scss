@@ -1,11 +1,17 @@
 .choices {
-
   padding: var(--reg-padding);
   color: var(--black-color);
 }
+
 .row-choice {
   display: flex;
+  width: fit-content;
   column-gap: var(--reg-padding);
   justify-content: space-evenly;
-  width: fit-content;
+
+  margin-top: 1rem;
+}
+
+.error{
+  color:var(--black-color)
 }
