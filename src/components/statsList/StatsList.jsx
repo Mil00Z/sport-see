@@ -1,6 +1,8 @@
 import {useState,useEffect} from 'react';
 import {useOutletContext} from 'react-router-dom'
 
+import PropsTypes from 'prop-types'
+
 import useFetching  from '@root/utils/hooks.jsx'
 import Error from '@components/error/Error';
 
@@ -12,15 +14,45 @@ import lip from '@assets/cheeseburger.svg'
 
 import '@styles/layout/statsList.scss'
 
-const StatsList = () => {
 
-  const {mockDatas,userId} = useOutletContext();
+
+
+/**
+ * Composant StatsList : affiche les données calorifiques
+ * @componant StatsList 
+ * @returns {JSX.Element}
+ */
+
+
+/**
+ * Outlet Context
+ * @returns {Object} => Objet de données retourné par OutletContext
+ */
+
+
+/**
+ * Import de Hooks + States
+ * @property {Object} dataFetched => Objet de données retourné par UseFetching
+ * @property {boolean} isLoaded => State de chargement
+ * @property {Object} mockDatas => Objet de données retourné par OutletContext
+ * @property {array} dataSets => Tableau de données pour le render, modifié suivant les données récupérées
+ * 
+ */
+
+
+const StatsList = (props) => {
+
+
+  const {userId} = props ;
+
+  const {mockDatas} = useOutletContext();
 
   const {dataFetched,isLoaded} = useFetching(`http://localhost:3000/user/${userId}`)
 
   const [dataSets,setDataSets] = useState([]);
 
-  
+
+
   useEffect(() => { 
 
     if(isLoaded && dataFetched){
@@ -140,7 +172,10 @@ const StatsList = () => {
 
   )
 
-
-
 }
+
+StatsList.propTypes = {
+  userId: PropsTypes.number.isRequired
+}
+
 export default StatsList

@@ -1,5 +1,6 @@
 import {useState,useEffect} from 'react';
 import {useOutletContext} from 'react-router-dom'
+import PropsTypes from 'prop-types'
 
 import useFetching  from '@root/utils/hooks.jsx'
 import Error from '@components/error/Error';
@@ -11,7 +12,7 @@ import '@styles/layout/graphics.scss'
 
 
 /**
- * Composant Daily : affiche le graphique des activités quotidiennes (calories et poids) sur 7 jours
+ * Composant Daily : affiche le graphique des activités quotidiennes (calories et poids) sur N jours
  * @componant Daily
  * @returns {JSX.Element}
  */
@@ -28,16 +29,18 @@ import '@styles/layout/graphics.scss'
  * @property {Object} dataFetched => Objet de données retourné par UseFetching
  * @property {boolean} isLoaded => State de chargement
  * @property {Object} mockDatas => Objet de données retourné par OutletContext
- * @property {number} userId => Identifiant de l'utilisateur
  * @property {array} dataSets => Tableau de données pour le render, modifié suivant les données récupérées
  * 
  */
 
 
 
-const Daily = () =>{
+const Daily = (props) =>{
 
-  const {mockDatas,userId} = useOutletContext()
+
+  const {userId} = props;
+
+  const {mockDatas} = useOutletContext()
 
   const {dataFetched,isLoaded} = useFetching(`http://localhost:3000/user/${userId}/activity`)
 
@@ -165,7 +168,10 @@ const CustomTooltip = ({active,payload}) => {
   
 )  
 
-
 }
+
+ Daily.propTypes = {
+  userId:PropsTypes.number.isRequired
+ }
 
 export default Daily
