@@ -46,7 +46,7 @@ useEffect(() => {
 
     })
 
-    console.log('data flow : API');
+    // console.log('data flow : API');
 
   } else {
 
@@ -65,7 +65,7 @@ useEffect(() => {
 
       })
 
-      console.log('data flow : Mock');
+      // console.log('data flow : Mock');
     }
  
   }

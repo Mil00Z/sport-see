@@ -90,7 +90,7 @@ const StatsList = (props) => {
 
      })
 
-      console.log('data flow : API');
+      // console.log('data flow : API');
 
     } else {
 
@@ -130,7 +130,7 @@ const StatsList = (props) => {
 
         });
 
-        console.log('data flow : Mock');
+        // console.log('data flow : Mock');
 
       }
     }

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import PropsTypes from 'prop-types'
 
 import Daily from '@components/graphics/Daily'
 import Average from '@components/graphics/Average'
@@ -24,8 +24,8 @@ const Graphics = (props) =>{
 
 }
 
-Graphics.PropTypes = {
-  userId: PropTypes.number.isRequired
+Graphics.propTypes = {
+  userId: PropsTypes.number.isRequired
 }
 
 export default Graphics
