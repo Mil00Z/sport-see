@@ -47,7 +47,7 @@ const Average = (props) =>{
   
   useEffect(() => { 
 
-    console.log('is loaded',isLoaded);
+    // console.log('is loaded',isLoaded);
 
     if (isLoaded) {
 
@@ -64,7 +64,7 @@ const Average = (props) =>{
 
       });
 
-      console.log('data flow : API');
+      // console.log('data flow : API');
   
     } else {
 
@@ -86,10 +86,10 @@ const Average = (props) =>{
   
         });
 
-        console.log('data flow : Mock');
+        // console.log('data flow : Mock');
 
       } else {
-        console.log('Finally Datas Error')
+        // console.log('Finally Datas Error')
       }
 
     }

@@ -71,7 +71,7 @@ let getScore;
 
       })
 
-    console.log('data flow : API');
+    // console.log('data flow : API');
 
   } else {
 
@@ -94,8 +94,6 @@ let getScore;
       })
 
     }
-
-    
 
   }
 
